@@ -19,7 +19,7 @@ import { DiAndroid,
         DiPython
     } from "react-icons/di";
 
-    const size = 34;
+const size = 34;
 
 export const SnowFlakes = [
     { element: <DiAndroid size={size}/> },
