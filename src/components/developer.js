@@ -1,4 +1,4 @@
-function Developer() {
+const Developer = () => {
     return (
         <>
             <div className="worker" >

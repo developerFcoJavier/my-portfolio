@@ -1,6 +1,6 @@
 import {SnowFlakes} from "../data/snowflakes";
 
-function SnowFlake() {
+const SnowFlake = () => {
     return (
         <div className="snowflakes" aria-hidden="true">
             {

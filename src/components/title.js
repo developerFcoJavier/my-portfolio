@@ -1,4 +1,4 @@
-function Title() {
+const Title = () => {
     return (
         <>
             <div className="title">
