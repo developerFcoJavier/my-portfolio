@@ -1,16 +1,22 @@
 import {Projects} from "../data/projects";
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const ProjectList = ({projects})=>{ 
 
+    var number = 1;
+
     const styleByElement = (element,id,name='')=>{
         
+        const randomColor = `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase()}`;
+
         switch(element){
             case 'book':
                 return {
                     position: 'absolute',
                     height: `25px`,
                     width: `115px`,
-                    backgroundColor: `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase()}`,
+                    backgroundColor: randomColor,
                     bottom: `${195+(id*26.5)}px`,
                     left: '420px',
                     borderRadius: '12%',
@@ -43,7 +49,6 @@ const ProjectList = ({projects})=>{
 
     }
 
-    var number = 1;
     return (
         <>
             {/* Books on desk */
@@ -51,9 +56,11 @@ const ProjectList = ({projects})=>{
                     const id = number ++;
                     return(
                         <div  key={Math.random().toString()}>
-                            <div style={styleByElement('book',id)}>
-                                <a style={styleByElement('book-a',id,project.name)} href={project.path}>{project.name}</a>
-                            </div>
+                            <HtmlTooltip title={<TooltipContent project={project}/>} placement="right" arrow>
+                                <div style={styleByElement('book',id)}>
+                                    <a style={styleByElement('book-a',id,project.name)} href={project.path}>{project.name}</a>
+                                </div>
+                            </HtmlTooltip>
                             <div style={styleByElement('book-ring',id)}></div>
                         </div>
                 )})
@@ -62,9 +69,29 @@ const ProjectList = ({projects})=>{
     )
 }
 
+const TooltipContent = ({project})=>{
+    return(
+        <>
+            <h1>{project.name}</h1>
+            <p>{project.tooltip}</p>
+        </>
+    );
+}
+
+const HtmlTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 280,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+}));
+
 
 const Project= () => {
-
     return ( 
         <>
             <ProjectList projects={Projects}/>

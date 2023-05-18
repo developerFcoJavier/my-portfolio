@@ -1,10 +1,10 @@
 import { DiGithubBadge } from "react-icons/di";
 import { BsLinkedin,BsWhatsapp,BsFillEnvelopeAtFill } from "react-icons/bs";
 //Import components
-import Developer from "../../components/developer";
-import SnowFlake from "../../components/snowflake";
-import Title from "../../components/title";
-import Project from "../../components/projects";
+import Developer from "../components/developer";
+import SnowFlake from "../components/snowflake";
+import Title from "../components/title";
+import Project from "../components/projects";
 import './main.css';
 
 const Contact = () =>{

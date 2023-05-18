@@ -1,11 +1,9 @@
 import './App.css';
-import Index from './pages/main/main';
+import Index from './main/main';
 
-function App() {
+const App = ()=> {
   return (
-    <div className="App">
-      <Index/>
-    </div>
+    <Index/>
   );
 }
 
