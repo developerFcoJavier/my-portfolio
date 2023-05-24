@@ -6,22 +6,23 @@ import SnowFlake from "../components/snowflake";
 import Title from "../components/title";
 import Project from "../components/projects";
 import './main.css';
+import data from '../data/personalInfo.json';
 
 const Contact = () =>{
     return(
         <>
             <div className="contact">
                 <h4>Get in touch</h4>
-                <li><BsFillEnvelopeAtFill size="20"/> <a href="mailto: developer.fjoh@gmail.com" target="_blank" rel="noreferrer">developer.fjoh@gmail.com</a></li>
-                <li><BsWhatsapp size="20" /> <a href = "https://wa.me/525588359277" target="_blank" rel="noreferrer">+52 5588359277</a></li>
+                <li><BsFillEnvelopeAtFill size="20"/> <a href={`mailto: ${data.email}`} target="_blank" rel="noreferrer">{data.email}</a></li>
+                <li><BsWhatsapp size="20" /> <a href = {`https://wa.me/${data.phone}`} target="_blank" rel="noreferrer">{data.phone}</a></li>
             </div>
             <div className="social">
                 <h4>Social Media</h4>
                 <li>
-                    <a href="https://developerfcojavier.github.io/my-portfolio/" target="_blank" rel="noreferrer">
+                    <a href={`https://${data.github}`} target="_blank" rel="noreferrer">
                         <DiGithubBadge size="30" color="white" />
                     </a>&nbsp;
-                    <a href="https://www.linkedin.com/in/developerfcojavier/" target="_blank" rel="noreferrer">
+                    <a href={`https://www.linkedin.com/in/${data.linkedin}`} target="_blank" rel="noreferrer">
                         <BsLinkedin size="20" color="white"/>
                     </a>
                 </li>

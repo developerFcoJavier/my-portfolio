@@ -9,14 +9,16 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
+import { MdClose } from "react-icons/md";
+
 import Slide from '@mui/material/Slide';
+import CustomTooltip from './tooltip';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FullScreenDialog() {
+export default function FullScreenDialog({project,color}) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -27,11 +29,25 @@ export default function FullScreenDialog() {
     setOpen(false);
   };
 
+  const style = (name) =>{
+  return {
+      color: '#fff',
+      fontFamily:' Arial, sans-serif, cursive',
+      textShadow: '0 0 4px #000000',
+      // fontFamily: 'Pacifico',
+      fontSize: `${name.length >= 11 ? '8.5px' : '12px'}`,
+      zIndex: 1,
+      background: 'none !important',
+      border: 'none',
+      padding: '0',
+      cursor: 'pointer',
+  }}
+
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open full-screen dialog
-      </Button>
+      <CustomTooltip project={project}>
+        <Button style={style(project.name)} onClick={handleClickOpen}>{project.name}</Button>
+      </CustomTooltip>
       <Dialog
         fullScreen
         open={open}
@@ -39,34 +55,25 @@ export default function FullScreenDialog() {
         TransitionComponent={Transition}
       >
         <AppBar sx={{ position: 'relative' }}>
-          <Toolbar>
+          <Toolbar style={{backgroundColor:color}}>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              {project.name}
+            </Typography>
             <IconButton
               edge="start"
               color="inherit"
               onClick={handleClose}
               aria-label="close"
             >
-              <CloseIcon />
+              <MdClose />
             </IconButton>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Sound
-            </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              save
-            </Button>
           </Toolbar>
         </AppBar>
         <List>
-          <ListItem button>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
+          <ListItem >
+            <ListItemText primary={project.description} secondary="" />
           </ListItem>
           <Divider />
-          <ListItem button>
-            <ListItemText
-              primary="Default notification ringtone"
-              secondary="Tethys"
-            />
-          </ListItem>
         </List>
       </Dialog>
     </div>
