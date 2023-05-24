@@ -7,7 +7,7 @@ const CustomTooltip = (props) =>{
         <Tooltip {...props} classes={{ popper: className }} />
       ))(({ theme }) => ({
         [`& .${tooltipClasses.tooltip}`]: {
-          backgroundColor: '#000',
+          backgroundColor: '#636866',
           color: '#fff',
           maxWidth: 280,
           fontSize: theme.typography.pxToRem(12),

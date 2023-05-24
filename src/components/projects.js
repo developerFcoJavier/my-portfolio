@@ -20,18 +20,19 @@ const ProjectList = ({projects,matches})=>{
                     borderRadius: '12%',
                     textAlign: 'end',
                     paddingRight: '5px',
+                    zIndex:10
                 }
             case 'book-ring':
                 return {
                     position: 'absolute',
                     width: '10px',
                     height: '10px',
-                    background: 'grey',
+                    background: '#4b4848',
                     borderRadius: '50%',
                     bottom: `${200+(id*25)}px`,
                     left: `${matches ? '227':'423'}px`,
-                    zIndex: 1,
                     opacity: 0.6,
+                    zIndex:11
                 }
             default: return ''
         }

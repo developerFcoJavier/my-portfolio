@@ -44,7 +44,7 @@ export default function FullScreenDialog({project,color}) {
 
   return (
     <div>
-      <CustomTooltip content={project} sx={{placement:'right'}}>
+      <CustomTooltip content={project} sx={{placement:'top'}}>
         <Button style={style(project.name)} onClick={handleClickOpen}>{project.name}</Button>
       </CustomTooltip>
       <Dialog
