@@ -2,6 +2,7 @@ import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const CustomTooltip = (props) =>{
+    
     const HtmlTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
       ))(({ theme }) => ({
@@ -15,7 +16,7 @@ const CustomTooltip = (props) =>{
     }));
 
     return(
-        <HtmlTooltip title={<TooltipContent project={props.project}/>} placement="right" arrow>
+        <HtmlTooltip title={<TooltipContent project={props.content}/>} placement={props.sx.placement} arrow>
             {props.children}
         </HtmlTooltip>
     );

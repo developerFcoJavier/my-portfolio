@@ -7,16 +7,21 @@ import Title from "../components/title";
 import Project from "../components/projects";
 import './main.css';
 import data from '../data/personalInfo.json';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Contact = () =>{
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
     return(
         <>
-            <div className="contact">
+            <div className={`contact${matches ? '-mobile' : ''}`}>
                 <h4>Get in touch</h4>
                 <li><BsFillEnvelopeAtFill size="20"/> <a href={`mailto: ${data.email}`} target="_blank" rel="noreferrer">{data.email}</a></li>
                 <li><BsWhatsapp size="20" /> <a href = {`https://wa.me/${data.phone}`} target="_blank" rel="noreferrer">{data.phone}</a></li>
             </div>
-            <div className="social">
+            <div className={`social${matches ? '-mobile' : ''}`}>
                 <h4>Social Media</h4>
                 <li>
                     <a href={`https://${data.github}`} target="_blank" rel="noreferrer">
@@ -32,10 +37,11 @@ const Contact = () =>{
 }
 
 const Main = () => {
+    
     return (
         <>
-            <Title/>
             <div className="container">
+                <Title name={data.name} level={data.level}/>
                 <div className="developer">
                     <Project/>
                     <Contact/>

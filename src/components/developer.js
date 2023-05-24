@@ -1,7 +1,21 @@
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import CustomTooltip from './tooltip';
+import data from '../data/personalInfo.json';
+
 const Developer = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const aboutme = {
+        name:"About me",
+        tooltip:data.aboutme
+    }
+
     return (
         <>
-            <div className="worker" >
+        <CustomTooltip content={aboutme} sx={{placement:'left'}}>
+            <div className={`worker${matches ? '-mobile' : ''}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="250px" viewBox="0 0 777 392">
                     <defs>
                         <path id="a" d="M661.13187,312 C659.872124,314.376529 657.370611,316 654.49038,316 L654.002374,316 C653.439102,316 653,316.45191 653,317.009369 L653,318.990631 C653,319.556647 653.444523,320 653.992869,320 L709.500115,320 C715.853325,320 720.96234,314.851275 720.915884,308.5 C720.869418,302.147329 715.680241,297 709.325509,297 L654.008968,297 C653.455353,297 653,297.45191 653,298.009369 L653,299.990631 C653,300.556647 653.448778,301 654.002374,301 L654.49038,301 C657.369959,301 659.873421,302.621098 661.133241,305 L707,305 L707,306 L661.57236,306 C661.796205,306.632073 661.937588,307.303033 661.983562,307.999999 L707,308 L707,309 L661.983514,309 C661.937435,309.696635 661.795783,310.367655 661.57151,311 L707,311 L707,312 L661.13187,312 L661.13187,312 Z"/>
@@ -45,6 +59,7 @@ const Developer = () => {
                     </g>
                 </svg>
             </div>
+        </CustomTooltip>
         </>
     )
 }

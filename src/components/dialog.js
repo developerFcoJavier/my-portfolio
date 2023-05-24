@@ -10,7 +10,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { MdClose } from "react-icons/md";
-
 import Slide from '@mui/material/Slide';
 import CustomTooltip from './tooltip';
 
@@ -45,7 +44,7 @@ export default function FullScreenDialog({project,color}) {
 
   return (
     <div>
-      <CustomTooltip project={project}>
+      <CustomTooltip content={project} sx={{placement:'right'}}>
         <Button style={style(project.name)} onClick={handleClickOpen}>{project.name}</Button>
       </CustomTooltip>
       <Dialog

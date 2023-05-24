@@ -1,24 +1,25 @@
 import {Projects} from "../data/projects";
 import FullScreenDialog from './dialog';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-const ProjectList = ({projects})=>{ 
+const ProjectList = ({projects,matches})=>{ 
 
     var number = 1;
-
     const styleByElement = (element,id,color='')=>{
         
         switch(element){
             case 'book':
                 return {
                     position: 'absolute',
-                    height: `25px`,
-                    width: `115px`,
+                    height: `${matches ? '23.5':'25'}px`,
+                    width: `${matches ? '110':'115'}px`,
                     backgroundColor: color,
-                    bottom: `${195+(id*26.5)}px`,
-                    left: '420px',
+                    bottom: `${195+(id*24)}px`,
+                    left: `${matches ? '225':'420'}px`,
                     borderRadius: '12%',
                     textAlign: 'end',
-                    paddingRight: '15px',
+                    paddingRight: '5px',
                 }
             case 'book-ring':
                 return {
@@ -27,8 +28,8 @@ const ProjectList = ({projects})=>{
                     height: '10px',
                     background: 'grey',
                     borderRadius: '50%',
-                    bottom: `${200+(id*27)}px`,
-                    left: '423px',
+                    bottom: `${200+(id*25)}px`,
+                    left: `${matches ? '227':'423'}px`,
                     zIndex: 1,
                     opacity: 0.6,
                 }
@@ -45,9 +46,9 @@ const ProjectList = ({projects})=>{
                     const randomColor = `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase()}`;
                     return(
                         <div  key={Math.random().toString()}>
-                                <div style={styleByElement('book',id,randomColor)}>
-                                    <FullScreenDialog project={project} color={randomColor}/>
-                                </div>
+                            <div style={styleByElement('book',id,randomColor)}>
+                                <FullScreenDialog project={project} color={randomColor}/>
+                            </div>
                             <div style={styleByElement('book-ring',id)}></div>
                         </div>
                 )})
@@ -57,12 +58,15 @@ const ProjectList = ({projects})=>{
 }
 
 const Project= () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
     return ( 
-        <>
-            <ProjectList projects={Projects}/>
+        <>  
+            <ProjectList projects={Projects} matches={matches}/>
             {/* Desktop */}
-            <div className="desk"></div>
-            <div className="deskcounter"></div>
+            <div className={`desk${matches ? '-mobile' : ''}`}></div>
+            <div className={`deskcounter${matches ? '-mobile' : ''}`}></div>
         </>
     )
 }
