@@ -1,5 +1,5 @@
 import { DiGithubBadge } from "react-icons/di";
-import { BsLinkedin,BsWhatsapp,BsFillEnvelopeAtFill } from "react-icons/bs";
+import { BsLinkedin,BsWhatsapp,BsFillEnvelopeAtFill,BsFilePdf } from "react-icons/bs";
 //Import components
 import Developer from "../components/developer";
 import SnowFlake from "../components/snowflake";
@@ -18,8 +18,9 @@ const Contact = () =>{
         <>
             <div className={`contact${matches ? '-mobile' : ''}`}>
                 <h4>Get in touch</h4>
-                <li><BsFillEnvelopeAtFill size="20"/> <a href={`mailto: ${data.email}`} target="_blank" rel="noreferrer">{data.email}</a></li>
-                <li><BsWhatsapp size="20" /> <a href = {`https://wa.me/${data.phone}`} target="_blank" rel="noreferrer">{data.phone}</a></li>
+                <li><BsFillEnvelopeAtFill size="20"/> <a href={`mailto: ${data.email}`} target="_blank" rel="noreferrer">{matches ? 'email' : data.email}</a></li>
+                <li><BsWhatsapp size="20" /> <a href = {`https://wa.me/${data.phone}`} target="_blank" rel="noreferrer">{matches ? 'phone' : data.phone}</a></li>
+                <li><BsFilePdf size="20" /> <a href = {`${data.cvname}`} download>{ matches ? 'CV' :data.cvname}</a></li>
             </div>
             <div className={`social${matches ? '-mobile' : ''}`}>
                 <h4>Social Media</h4>

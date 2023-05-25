@@ -15,12 +15,14 @@ const ProjectList = ({projects,matches})=>{
                     height: `${matches ? '23.5':'25'}px`,
                     width: `${matches ? '110':'115'}px`,
                     backgroundColor: color,
-                    bottom: `${195+(id*24)}px`,
+                    bottom: `${195+(id*27.5)}px`,
                     left: `${matches ? '225':'420'}px`,
                     borderRadius: '12%',
                     textAlign: 'end',
                     paddingRight: '5px',
-                    zIndex:10
+                    zIndex:10,
+                    border: '2px solid #000',
+                    borderRight: '0px solid transparent',
                 }
             case 'book-ring':
                 return {
@@ -29,10 +31,12 @@ const ProjectList = ({projects,matches})=>{
                     height: '10px',
                     background: '#4b4848',
                     borderRadius: '50%',
-                    bottom: `${200+(id*25)}px`,
+                    bottom: `${200+(id*28.5)}px`,
                     left: `${matches ? '227':'423'}px`,
                     opacity: 0.6,
-                    zIndex:11
+                    zIndex:11,
+                    border: 'solid 1.5px',
+                    borderLeft: '0px solid transparent',
                 }
             default: return ''
         }
